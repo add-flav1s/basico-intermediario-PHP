@@ -1,8 +1,26 @@
 <?php
 
 
-$nome = $_POST['nome'];
+function validationInt() {
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $idade = $_POST['idade'];
 
-$email = $_POST['email'];
+    if (isset($_POST['enviar-form'])):
+        $erros = array();
+        
+        if (!$idade = filter_input(INPUT_POST, 'idade', FILTER_VALIDATE_INT)):
+            $erros[] = 'Idade precisa ser um numero inteiro.';
+        endif; 
+        if(!empty($erros)):
+            foreach ($erros as $erro) {
+                echo "<li> $erro </li>";
+            }
+        else:
+            echo 'Parabens...seus dados estão corretos.';
+        endif;
+    endif;
+    echo  "<br> <hr>" .  'Seu nome é ' . $nome . ' ,você tem ' . $idade . ' anos e seu email é ' . $email . '.';
+}
 
-echo 'Seu nome é ' . $nome . ' e seu email é ' . $email . '.' . PHP_EOL;
+validationInt();

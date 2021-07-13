@@ -13,7 +13,9 @@
         <hr>
         Email: <input type="email" name="email" id="">
         <hr>
-        <button type="submit">Enviar</button>
+        Idade: <input type="text" name="idade">
+        <hr>
+        <button type="submit" name="enviar-form">Enviar</button>
     </form>
 </body>
 
