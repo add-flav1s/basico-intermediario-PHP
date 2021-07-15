@@ -9,9 +9,13 @@ function validationInt() {
     if (isset($_POST['enviar-form'])):
         $erros = array();
         
+        if (!$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)):
+            $erros[] = 'Precisa ser um email valido.';
+        endif; 
         if (!$idade = filter_input(INPUT_POST, 'idade', FILTER_VALIDATE_INT)):
             $erros[] = 'Idade precisa ser um numero inteiro.';
         endif; 
+
         if(!empty($erros)):
             foreach ($erros as $erro) {
                 echo "<li> $erro </li>";
