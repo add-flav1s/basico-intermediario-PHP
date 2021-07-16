@@ -12,23 +12,27 @@
     <?php
 if(isset($_POST['enviar-formulario'])):
     $formatosPermitidos = array('png','jpg','gif','jpeg');
-    $extensao = pathinfo ($_FILES['arquivo'] ['name'], PATHINFO_EXTENSION);
+    $quantidadeArquivos = count($_FILES['arquivo'] ['name']);
+    $contador = 0;
 
-    if(in_array($extensao, $formatosPermitidos)):
-       $pasta = "arquivos/";
-       $temporario = $_FILES['arquivo'] ['tmp_name'];
-       $novoNome = uniqid().".$extensao";
+    while ($contador < $quantidadeArquivos):
+        $extensao = pathinfo ($_FILES['arquivo'] ['name'] [$contador], PATHINFO_EXTENSION);
 
-        if(move_uploaded_file($temporario, $pasta.$novoNome)):
-            $mensagem = 'Upload feito com sucesso.';
+        if(in_array($extensao, $formatosPermitidos)):
+        $pasta = "arquivos/";
+        $temporario = $_FILES['arquivo'] ['tmp_name'] [$contador];
+        $novoNome = uniqid().".$extensao";
+
+            if(move_uploaded_file($temporario, $pasta.$novoNome)):
+                echo "Upload feito com sucesso para $pasta.$novoNome <br>";
+            else:
+                echo "Erro ao enviar o arquivo .$temporario";
+            endif;
         else:
-            $mensagem = 'Não foi possivel fazer o upload.';
+            echo "$extensao não é permitida. <br>";
         endif;
-    else:
-        $mensagem = 'Formato inválido.';
-    endif;
-    
-    echo $mensagem;
+        $contador++;
+    endwhile;
 endif;
 ?>
     <form action="" method="post" enctype="multipart/form-data">
