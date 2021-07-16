@@ -24,7 +24,7 @@ if(isset($_POST['enviar-formulario'])):
         $novoNome = uniqid().".$extensao";
 
             if(move_uploaded_file($temporario, $pasta.$novoNome)):
-                echo "Upload feito com sucesso para $pasta.$novoNome <br>";
+                echo "Upload feito com sucesso para $pasta$novoNome <br>";
             else:
                 echo "Erro ao enviar o arquivo .$temporario";
             endif;
