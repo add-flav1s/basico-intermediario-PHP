@@ -32,7 +32,7 @@ if(isset($_POST['enviar-formulario'])):
 endif;
 ?>
     <form action="" method="post" enctype="multipart/form-data">
-        <input type="file" name="arquivo"><br>
+        <input type="file" name="arquivo[]" multiple><br>
         <button type="submit" name="enviar-formulario">Enviar</button>
     </form>
 </body>
