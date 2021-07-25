@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculator</title>
 </head>
 <style>
 .container {
@@ -36,7 +36,7 @@ body {
         <div class="box">
 
             <h3>Multiplication Calculator</h3>
-            <form action="site.php" method="get">
+            <form action="index.php" method="get">
                 Number 1: <input type="number" name="numberOne">
                 <br><br>
                 Number 2: <input type="number" name="numberTwo">
